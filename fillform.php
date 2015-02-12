@@ -6,6 +6,8 @@
 		<title>MNNIT-conference</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
+     
+  
 </head>
 <body>
 	<div class="page-header no-margin row">
@@ -50,17 +52,10 @@
 	</div>
 	</div>
 </nav>
-
-<div class="container-fluid">
-	<div class="row">
-<div class="col-md-offset-3 col-md-6 ">
-<div class="panel panel-default">
-<div class="panel-body">
-
 <?php
 include 'db.php';
 $confid=$_GET['confid'];
-
+$subcatid= null;
 $c=mysqli_query($connection,"SELECT * FROM conference WHERE confid='$confid' and curdate() between startdate and enddate");
 
 if(mysqli_num_rows($c) == 0)
@@ -69,62 +64,188 @@ if(mysqli_num_rows($c) == 0)
 	}	
 else {
 ?>
-<form class="form-horizontal"  method="post" action="submit.php?confid=<?php echo "$confid";?> " role="form" enctype="multipart/form-data">
-  <div class="form-group">
+
+  <div class="container-fluid">
+     <div class="row">
+        <div class="col-md-offset-3 col-md-6 ">
+          <div class="panel panel-default">
+              <div class="panel-body">
+              <form class="form-horizontal"  method="post" action="submit.php?confid=<?php echo $confid."&subcatid=".$subcatid;?> " role="form" enctype="multipart/form-data">
+
+<!--PERSONAL DETAILSname-->      
+ <div class="form-group">
     <label for="Name" class="col-sm-2 control-label">NAME*</label>
       <div class="col-sm-10">
     <input type="text" class="form-control" id="Name" required placeholder="Enter NAME" name="name">
       </div>
   </div>
+ <!--instname-->     
   <div class="form-group">
     <label for="InstituteName"class="col-sm-2 control-label" >INSTITUTE NAME*</label>
        <div class="col-sm-10">
     <input type="text" class="form-control" id="InstituteName" required name="instname" placeholder="Enter INSTITUTE NAME">
         </div>
   </div>
+ <!--address-->    
   <div class="form-group">
       <label for="Address"class="col-sm-2 control-label">ADDRESS*</label>
-     <div class="col-sm-10">
-    <input type="text" class="form-control" id="Address" name="address" required>
+      <div class="col-sm-10">
+      <input type="text" class="form-control" id="Address" name="address" required>
+      </div>
 </div>
-</div>
- <div class="form-group">
-      <label for="Attach file"class="col-sm-2 control-label">PDF</label>
-     <div class="col-sm-10">
-    <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-    <input name="userfile" type="file" id="userfile"><!--required-->
-</div>
-</div>
-
-    <div class="form-group">
+<!--email-->    
+<div class="form-group">
     <label for="exampleInputEmail1"class="col-sm-2 control-label">Email address*</label>
      <div class="col-sm-10">
     <input type="email" class="form-control" name="email" required id="exampleInputEmail1" placeholder="Enter email">
-  </div>
+    </div>
 </div>
-
-   <div class="form-group">
+<!--phone-->    
+<div class="form-group">
     <label for="ContactNo."class="col-sm-2 control-label">CONTACT NO.</label>
      <div class="col-sm-10">
-    <input type="number" class="form-control" id="ContactNo." required name="phone">
-</div>
+    <input type="tel" class="form-control" id="ContactNo." required name="phone">
+    </div>
 </div>
 
-    <button type="submit" name="upload" class="btn btn-primary">Submit</button>
+
+
+
+ <!--PAPER INFOtitle-->    
+  <div class="form-group">
+    <label for="Title" class="col-sm-2 control-label">TITLE*</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="title" required placeholder="Enter TITLE OF THE PAPER" name="title">
+      </div>
+  </div>
+  <!--abstract-->    
+  <div class="form-group">
+    <label for="abstract" class="col-sm-2 control-label" >ABSTRACT*</label>
+       <div class="col-sm-10">
+        <input type="text" class="form-control" id="abstract" required name="aabstract" placeholder="Enter Abstract">
+        </div>
+  </div>
+ <!--cast/subcat-->    
+
+
+ <!--new beg-->
+ <div class="form-group" id="sneha">
+      <label for="category" class="col-sm-2 control-label">CATEGORY</label>
+      <div class="col-sm-10">
+     <select name="catid">
+      
+
+     <?php
+
+
+     $sql="SELECT category_name,catid FROM category natural join conf_category WHERE confid='$confid'";
+
+     if ($result=mysqli_query($connection,$sql))
+     {
+     // Fetch one and one row
+     while ($row=mysqli_fetch_row($result))
+     {
+    
+     ?>
+      <option  value="<?php echo $row[1];?>"> <?php echo $row[0];?></option>  
+     <?php
+     }
+     // Free result set
+        mysqli_free_result($result);
+     }
+
+
+
+     ?>
+
+  </select>
+      
+        
+  
+      </div>
+      
+ </div>
+
+ <!--new beg-->
+ <div class="form-group" >
+      <label for="category" class="col-sm-2 control-label">SUBCATEGORY</label>
+      <div class="col-sm-10">
+     <select name="subcatid">
+      
+
+     <?php
+
+
+     $sql1="SELECT subcategory_name,subcatid FROM subcategory natural join conf_subcategory WHERE confid='$confid'";
+
+     if ($result1=mysqli_query($connection,$sql1))
+     {
+     // Fetch one and one row
+     while ($row1=mysqli_fetch_row($result1))
+     {
+    
+     ?>
+      <option  value="<?php echo $row1[1];?>"> <?php echo $row1[0];?></option>  
+     <?php
+     }
+     // Free result set
+        mysqli_free_result($result1);
+     }
+
+
+
+     ?>
+
+  
+      
+        
+  </select>
+      </div>
+      
+ </div>      
+
+     <!--keywords-->    
+  <div class="form-group">
+      <label for="keywords"class="col-sm-2 control-label">KEYWORDS*</label>
+     <div class="col-sm-10">
+        <input type="text" class="form-control" id="keywords" name="keywordsi" required>
+      </div>
+  </div>
+
+<!--file-->    
+ <div class="form-group">
+      <label for="Attach file"class="col-sm-2 control-label">PDF</label>
+     <div class="col-sm-10">
+        <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+      <input name="userfile" type="file" id="userfile"><!--required-->
+      </div>
+</div>
+
+
+
+<button type="submit" name="upload" class="btn btn-primary">Submit</button>
+ 
 </form>
+</div>
+</div>
 
 
+
+
+  
+
+    
+  
+
+ 
+ 
+</div></div></div>
 
 <?php
 	}	
 ?>
 
 
-</div>
-</div>
-</div>
-</div>
-</div>
 
 
 

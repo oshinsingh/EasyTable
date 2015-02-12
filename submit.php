@@ -35,17 +35,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $address = test_input($_POST["address"]);
   $phone = test_input($_POST["phone"]);
   $confid= $_GET['confid'];
-
+  $catid = test_input($_POST["catid"]);
+  $subcatid = test_input($_POST["subcatid"]);
   $c=mysqli_query($connection,"SELECT * FROM users WHERE name='$name'");
   $matches=mysqli_num_rows($c);$matches++;
-
-  $userid='$name'.'$matches';
+ $title=$_POST["title"];
+  $userid=$name.$matches;
+  $aabsract=$_POST['aabstract'];
+  $keywordsi=$_POST['keywordsi'];
   mysqli_query($connection,"INSERT INTO users VALUES ('$name','$instname','$address','$email',$phone,'$userid','lkolko')");
 
-$catid=mysqli_query($connection,"SELECT catid FROM category WHERE category_name='$_POST["category"]'");
-$subcatid=mysqli_query($connection,"SELECT subcatid FROM subcategory WHERE subcategory_name='$_POST["subcategory"]'");
+//$catid=mysqli_query($connection,"SELECT catid FROM category WHERE category_name='$_POST["category"]'");
+//$subcatid=mysqli_query($connection,"SELECT subcatid FROM subcategory WHERE subcategory_name='$_POST["subcategory"]'");
 
-$res=mysqli_query($connection,"INSERT INTO submit_paper VALUES ('$userid',$name','$confid',$_POST["title"],$_POST["abstract"],catid,subcatid,$_POST["keywords"],'$fileName', '$fileSize', '$fileType', '$content')");
+$res=mysqli_query($connection,"INSERT INTO submit_paper VALUES (null,'$userid','$confid','$title', '$aabsract' ,$subcatid,'$keywordsi','$fileName', $fileSize, '$fileType', '$content')");
+
 if(!$res) die('Error, query failed'); 
 
 //include 'library/closedb.php';
