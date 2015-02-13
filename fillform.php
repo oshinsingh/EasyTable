@@ -122,7 +122,8 @@ else {
   <div class="form-group">
     <label for="abstract" class="col-sm-2 control-label" >ABSTRACT*</label>
        <div class="col-sm-10">
-        <input type="text" class="form-control" id="abstract" required name="aabstract" placeholder="Enter Abstract">
+        <textarea name="abstract" rows=10 cols=70 class="form-control"></textarea>
+        <!--<input type="text-area" row=5 class="form-control" id="abstract" required name="aabstract" placeholder="Enter Abstract">-->
         </div>
   </div>
  <!--cast/subcat-->    
