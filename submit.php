@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $userid=$name.$matches;
   $aabsract=$_POST['aabstract'];
   $keywordsi=$_POST['keywordsi'];
+  
   mysqli_query($connection,"INSERT INTO users VALUES ('$name','$instname','$address','$email',$phone,'$userid','lkolko')");
 
 //$catid=mysqli_query($connection,"SELECT catid FROM category WHERE category_name='$_POST["category"]'");

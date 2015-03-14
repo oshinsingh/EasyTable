@@ -70,7 +70,7 @@ else {
         <div class="col-md-offset-3 col-md-6 ">
           <div class="panel panel-default">
               <div class="panel-body">
-              <form class="form-horizontal"  method="post" action="submit.php?confid=<?php echo $confid."&subcatid=".$subcatid;?> " role="form" enctype="multipart/form-data">
+              <form class="form-horizontal"  method="post" action="submit.php?confid=<?php echo $confid ?> " role="form" enctype="multipart/form-data">
 
 <!--PERSONAL DETAILSname-->      
  <div class="form-group">
@@ -120,9 +120,9 @@ else {
   </div>
   <!--abstract-->    
   <div class="form-group">
-    <label for="abstract" class="col-sm-2 control-label" >ABSTRACT*</label>
+    <label for="aabstract" class="col-sm-2 control-label" >ABSTRACT*</label>
        <div class="col-sm-10">
-        <textarea name="abstract" rows=10 cols=70 class="form-control"></textarea>
+        <textarea id="aabstract" name="aabstract" rows=10 cols=70 class="form-control"></textarea>
         <!--<input type="text-area" row=5 class="form-control" id="abstract" required name="aabstract" placeholder="Enter Abstract">-->
         </div>
   </div>
