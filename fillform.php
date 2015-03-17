@@ -31,7 +31,7 @@
 	<div class="collapse navbar-collapse navbar-right" id="bs-mnnit-navbar-collapse-1">
 		<div class="container-fluid push-right">
 		<div class="panel-body">	
-	<form class="form-inline">
+	<form class="form-inline" action="chkuser.php">
   <div class="form-group">
     <label class="sr-only" for="userid">USERID</label>
     <input type="text" class="form-control" id="userid" placeholder="Enter UserId">
