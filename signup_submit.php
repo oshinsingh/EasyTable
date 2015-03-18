@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['reg'])) {
+if(isset($_POST['signup'])) {
     require "db.php";
     if(isset($_POST['username']) && isset($_POST['password'])) {
         $username = strip_tags($_POST['username']);
@@ -8,15 +8,15 @@ if(isset($_POST['reg'])) {
         $repass=md5(strip_tags($_POST['repassword']));
         $email = strip_tags($_POST['email']);
         if($username==''){
-            header('location:./reg.php?error=user name empty');
+            header('location:./signup.php?error=user name empty');
             exit();
         }
         if(!strcmp($password,$repass)==0) {
-            header('Location:./reg.php?error=password not match');
+            header('Location:./signup.php?error=password not match');
             exit();
         }
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            header('location:reg.php?error=email not valid');
+            header('location:signup.php?error=email not valid');
             exit();
         }
         $query = "select * from login1 where username='$username'";

@@ -59,8 +59,11 @@
 <form class="form-horizontal" method="post" action="chkuser.php" role="form">
   <div class="form-group">
     <label for="username" class="col-sm-2 control-label">Username</label>
-    <div class="col-sm-10">
+    <div class="col-sm-5">
     <input type="text" class="form-control" id="Name" name="username" placeholder="Enter username">
+  </div>
+  <div class="col-sm-5">
+    <input type="text" class="form-control" id="Name" name="name" placeholder="Enter name">
   </div>
 </div>
   <div class="form-group">
