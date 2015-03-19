@@ -6,8 +6,45 @@
     <title>MNNIT-conference</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-     
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
+    <script>
+$(document).ready(function(){
+$('#username').keyup(username_check);
+});
   
+function username_check(){  
+var username = $('#username').val();
+if(username == "" || username.length < 4){
+$('#username').css('border-color', '#CCC');
+$('#tick').hide();
+}else{
+
+jQuery.ajax({
+   type: "POST",
+   url: "check.php",
+   data: 'username='+ username,
+   cache: false,
+   success: function(response){
+if(response == 1){
+  $('#username').css('border-color', '#C33'); 
+  $('#tick').hide();
+  $('#cross').fadeIn();
+  }else{
+  $('#username').css('border-color', '#090');
+  $('#cross').hide();
+  $('#tick').fadeIn();
+       }
+
+}
+});
+}
+
+
+
+}
+
+</script>
+
 </head>
 <body>
   <div class="page-header no-margin row">
@@ -52,16 +89,22 @@
 
 <div class="container-fluid">
   <div class="row">
-<div class="col-md-offset-3 col-md-6 ">
+<div class="col-md-offset-2 col-md-6 ">
 <div class="panel panel-default">
 <div class="panel-body">
 
-<form class="form-horizontal" method="post" action="chkuser.php" role="form">
+<form class="form-horizontal" method="post" action="signup_submit.php" role="form">
   <div class="form-group">
-    <label for="username" class="col-sm-2 control-label">Username</label>
+    <label for="username" class="col-sm-2 control-label">Username<img id="tick" src="images/tick.png" width="16" height="16"/>
+<img id="cross" src="images/cross.png" width="16" height="16"/></label>
+       
+
     <div class="col-sm-5">
-    <input type="text" class="form-control" id="Name" name="username" placeholder="Enter username">
+    <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+ 
+
   </div>
+
   <div class="col-sm-5">
     <input type="text" class="form-control" id="Name" name="name" placeholder="Enter name">
   </div>
@@ -72,7 +115,7 @@
     <input type="password" class="form-control" id="InstituteName" name="password" placeholder="Enter password">
   </div>
  <div class="col-sm-5">
-       <input type="repassword" class="form-control" id="InstituteName" name="repassword" placeholder="ReEnter password">
+       <input type="password" class="form-control" id="InstituteName" name="repassword" placeholder="ReEnter password">
   </div>
 
 </div>
@@ -124,14 +167,16 @@
 
 <footer class="site-footer navbar-fixed-bottom no-margin">
   <div class="container">
-    <div class="row">
-    <p>© 2015 All Rights Reserved</p>
-    </div>
+    
 
     <div class="bottom-footer navbar-static-bottom">
       <div class="cpl-md-5"></div>
       <div class="cpl-md-6">
+       
         <ul class="footer-nav">
+<!-- <div class="row">
+    <p>-->© 2015 All Rights Reserved<!--</p>
+    </div>-->
           <li><a href="index.html">Home</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="contact.html">Contact</a></li>
