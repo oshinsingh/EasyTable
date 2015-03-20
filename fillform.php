@@ -31,14 +31,14 @@
 	<div class="collapse navbar-collapse navbar-right" id="bs-mnnit-navbar-collapse-1">
 		<div class="container-fluid push-right">
 		<div class="panel-body">	
-	<form class="form-inline" action="chkuser.php">
+	<form class="form-inline" action="chkuser.php" method="post">
   <div class="form-group">
     <label class="sr-only" for="userid">USERID</label>
-    <input type="text" class="form-control" id="userid" placeholder="Enter UserId">
+    <input type="text" class="form-control" id="userid" name="username" placeholder="Enter UserId">
   </div>
   <div class="form-group">
     <label class="sr-only" for="exampleInputPassword3">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+    <input type="password" class="form-control" name="password" id="exampleInputPassword3" placeholder="Password">
   </div>
   <div class="checkbox">
     <label>
@@ -76,35 +76,35 @@ else {
  <div class="form-group">
     <label for="Name" class="col-sm-2 control-label">NAME*</label>
       <div class="col-sm-10">
-    <input type="text" class="form-control" id="Name" required placeholder="Enter NAME" name="name">
+    <input type="text" class="form-control" id="tf1" required placeholder="Enter NAME" name="name">
       </div>
   </div>
  <!--instname-->     
   <div class="form-group">
     <label for="InstituteName"class="col-sm-2 control-label" >INSTITUTE NAME*</label>
        <div class="col-sm-10">
-    <input type="text" class="form-control" id="InstituteName" required name="instname" placeholder="Enter INSTITUTE NAME">
+    <input type="text" class="form-control" id="tf2" required name="instname" placeholder="Enter INSTITUTE NAME">
         </div>
   </div>
  <!--address-->    
   <div class="form-group">
       <label for="Address"class="col-sm-2 control-label">ADDRESS*</label>
       <div class="col-sm-10">
-      <input type="text" class="form-control" id="Address" name="address" required>
+      <input type="text" class="form-control" id="tf3" name="address" required>
       </div>
 </div>
 <!--email-->    
 <div class="form-group">
     <label for="exampleInputEmail1"class="col-sm-2 control-label">Email address*</label>
      <div class="col-sm-10">
-    <input type="email" class="form-control" name="email" required id="exampleInputEmail1" placeholder="Enter email">
+    <input type="email" class="form-control" name="tf4" required id="exampleInputEmail1" placeholder="Enter email">
     </div>
 </div>
 <!--phone-->    
 <div class="form-group">
     <label for="ContactNo."class="col-sm-2 control-label">CONTACT NO.</label>
      <div class="col-sm-10">
-    <input type="tel" class="form-control" id="ContactNo." required name="phone">
+    <input type="tel" class="form-control" id="tf5" required name="phone">
     </div>
 </div>
 
@@ -227,6 +227,23 @@ else {
 <button type="submit" name="upload" class="btn btn-primary">Submit</button>
  
 </form>
+<script>
+var data = {
+    "tf1": "<?php echo "asas"; ?>",
+    "tf2": "johndoe@mail.com",
+    "tf3": "johndoe@mail.com",
+    "tf4": "johndoe@mail.com",
+    "tf5": "johndoe@mail.com",
+
+    // always use "name" to find radio or checkbox multiple
+    "lovejquery": "yes"
+}
+$("#f_findbyname .btn").bind("click", function() {
+    $("#f_findbyname").autofill(data, {
+        findbyname: false
+    });
+});
+</script>
 </div>
 </div>
 

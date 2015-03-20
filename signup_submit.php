@@ -4,8 +4,12 @@ if(isset($_POST['signup'])) {
     require "db.php";
     if(isset($_POST['username']) && isset($_POST['password'])) {
         $username = strip_tags($_POST['username']);
-        $password=md5(strip_tags($_POST['password']));
-        $repass=md5(strip_tags($_POST['repassword']));
+         $name = strip_tags($_POST['name']);
+         $address = strip_tags($_POST['address']);
+         $phone = strip_tags($_POST['phone']);
+          $instname = strip_tags($_POST['instname']);
+        $password=sha1(strip_tags($_POST['password']));
+        $repass=sha1(strip_tags($_POST['repassword']));
         $email = strip_tags($_POST['email']);
         if($username==''){
             header('location:./signup.php?error=user name empty');
@@ -19,20 +23,24 @@ if(isset($_POST['signup'])) {
             header('location:signup.php?error=email not valid');
             exit();
         }
-        $query = "select * from login1 where username='$username'";
-        $result = mysql_query($query);
-        if (mysql_num_rows($result) >= 1) {
+        $query = "SELECT * FROM users WHERE userid='$username'";
+        if($result = mysqli_query($connection,$query))
+        {
+        if (mysqli_num_rows($result) >= 1) {
             //Username is taken
-            header('location:reg.php?error=username already taken. please try another one');
+            header('location:signup.php?error=username already taken. please try another one');
             exit();
-        }
+        }}
         /*This insert command for username, password and email. if you need any other field you can insert it here*/
-        mysql_query("INSERT INTO login1(username,password,email) VALUES ('$username','$password','$email')") or  die("".mysql_error());
+        echo " ".$name." ".$address." ".$email." ".$password." ".$phone;
+        $query="INSERT INTO users VALUES ('$name','$instname','$address','$email',$phone,'$username','$password')";
+        $result=mysqli_query($connection,$query) ;
+        if(!$result) die("problem insert");
         //Here you can write conformation or success message or use any redirect
         echo "Register success";
     }
 }
-    header('location:reg.php');
+    header('location:homepage.php?msg=welcome ');
     exit();
-}
+
 ?>
