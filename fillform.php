@@ -6,8 +6,36 @@
 		<title>MNNIT-conference</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
-     
-  
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
+    <script>
+
+
+
+    $("#start").click(function(){
+         windows.alert(9);
+        var json  = $("#username") .val();
+        var p = $("#password") .val();
+        var url="autofill.php";
+       jQuery.ajax({
+            url:url,
+            type:'post',
+            data:username: json,password: p,
+            beforeSend: function (){
+                $(".status") .html(" alt=\"Loading ....\" />");
+            },
+            success:function(data){
+                $(".status").html(data);
+            }
+        });
+    });
+
+ });
+        
+
+
+
+
+    </script>
 </head>
 <body>
 	<div class="page-header no-margin row">
@@ -31,21 +59,21 @@
 	<div class="collapse navbar-collapse navbar-right" id="bs-mnnit-navbar-collapse-1">
 		<div class="container-fluid push-right">
 		<div class="panel-body">	
-	<form class="form-inline" action="chkuser.php" method="post">
+	<form class="form-inline" method="post" id="hello" >
   <div class="form-group">
     <label class="sr-only" for="userid">USERID</label>
     <input type="text" class="form-control" id="userid" name="username" placeholder="Enter UserId">
   </div>
   <div class="form-group">
     <label class="sr-only" for="exampleInputPassword3">Password</label>
-    <input type="password" class="form-control" name="password" id="exampleInputPassword3" placeholder="Password">
+    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
   </div>
   <div class="checkbox">
     <label>
       <input type="checkbox"> Remember me
     </label>
   </div>
-  <button type="submit" class="btn btn-default">Sign in</button>
+  <button type="submit" id="start" class="btn btn-default">Sign in</button>
 </form>
 </div>
 </div>
@@ -76,35 +104,35 @@ else {
  <div class="form-group">
     <label for="Name" class="col-sm-2 control-label">NAME*</label>
       <div class="col-sm-10">
-    <input type="text" class="form-control" id="tf1" required placeholder="Enter NAME" name="name">
+    <input type="text" class="form-control" id="name" required placeholder="Enter NAME" name="name">
       </div>
   </div>
  <!--instname-->     
   <div class="form-group">
     <label for="InstituteName"class="col-sm-2 control-label" >INSTITUTE NAME*</label>
        <div class="col-sm-10">
-    <input type="text" class="form-control" id="tf2" required name="instname" placeholder="Enter INSTITUTE NAME">
+    <input type="text" class="form-control" id="instname" required name="instname" placeholder="Enter INSTITUTE NAME">
         </div>
   </div>
  <!--address-->    
   <div class="form-group">
       <label for="Address"class="col-sm-2 control-label">ADDRESS*</label>
       <div class="col-sm-10">
-      <input type="text" class="form-control" id="tf3" name="address" required>
+      <input type="text" class="form-control" id="address" name="address" required>
       </div>
 </div>
 <!--email-->    
 <div class="form-group">
     <label for="exampleInputEmail1"class="col-sm-2 control-label">Email address*</label>
      <div class="col-sm-10">
-    <input type="email" class="form-control" name="tf4" required id="exampleInputEmail1" placeholder="Enter email">
+    <input type="email" class="form-control" name="phone" required id="email" placeholder="Enter email">
     </div>
 </div>
 <!--phone-->    
 <div class="form-group">
     <label for="ContactNo."class="col-sm-2 control-label">CONTACT NO.</label>
      <div class="col-sm-10">
-    <input type="tel" class="form-control" id="tf5" required name="phone">
+    <input type="tel" class="form-control" id="phone" required name="phone">
     </div>
 </div>
 

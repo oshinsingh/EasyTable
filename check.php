@@ -2,7 +2,7 @@
 include "db.php";
 
 
-$username = trim(strtolower($_POST['username']));
+$username = trim($_POST['username']);
 $username = mysql_escape_string($username);
 
 $query = "SELECT userid FROM users WHERE userid = '$username'";
