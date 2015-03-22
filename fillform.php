@@ -8,32 +8,41 @@
 		<link href="css/style.css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
     <script>
-
-
-
-    $("#start").click(function(){
-         windows.alert(9);
-        var json  = $("#username") .val();
-        var p = $("#password") .val();
-        var url="autofill.php";
-       jQuery.ajax({
-            url:url,
-            type:'post',
-            data:username: json,password: p,
-            beforeSend: function (){
-                $(".status") .html(" alt=\"Loading ....\" />");
-            },
-            success:function(data){
-                $(".status").html(data);
-            }
-        });
-    });
-
- });
+$(document).ready(function(){
+$(function(){
+$("#start").click(function(){
+  
+   
+  var url      = window.location.href; 
+  
+  $.post("autofill.php",{"username":$("#username").val(),"password":$("#password").val()},
+           function(data,status){
+         if(status=="success"){console.log("hi");
+         //dat=JSON.parse(data);console.log(data);
+           console.log(data);
+          $.each(data, function(i,item){  
         
-
-
-
+      if (item.field == "name") {
+              $("#name").val(item.value);
+            } else if (item.field == "instname") {
+              $("#instname").val(item.value);
+            }
+            else if (item.field == "address") {
+              $("#address").val(item.value);
+            }
+            else if (item.field == "phone") {
+              $("#phone").val(item.value);
+            }
+            else if (item.field == "email") {
+              $("#email").val(item.value);
+                              }//if
+                                      });
+        }
+         }//function close
+        );
+});
+});
+});
 
     </script>
 </head>
@@ -59,7 +68,7 @@
 	<div class="collapse navbar-collapse navbar-right" id="bs-mnnit-navbar-collapse-1">
 		<div class="container-fluid push-right">
 		<div class="panel-body">	
-	<form class="form-inline" method="post" id="hello" >
+	<form class="form-inline"  id="hello" method="post" >
   <div class="form-group">
     <label class="sr-only" for="userid">USERID</label>
     <input type="text" class="form-control" id="userid" name="username" placeholder="Enter UserId">
@@ -73,9 +82,9 @@
       <input type="checkbox"> Remember me
     </label>
   </div>
-  <button type="submit" id="start" class="btn btn-default">Sign in</button>
+  <button type="submit" id="start" name="start" class="btn btn-default">Sign in</button>
 </form>
-</div>
+</div>  
 </div>
 	</div>
 	</div>

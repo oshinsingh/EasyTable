@@ -31,7 +31,14 @@ if($count==1){
 
 $_SESSION['username']="$username";
 $_SESSION['password']="$password";
-header("location:login_success.php");
+
+//session_start();
+
+if(!isset($_SESSION['username'])){
+header("location:homepage.php");
+}
+else  header("location:lg_su.php");
+
 }
 else {
 echo "Wrong Username or Password";
