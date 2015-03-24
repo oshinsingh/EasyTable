@@ -29,6 +29,7 @@ if($count==1){
 
 // Register $username, $password and redirect to file "login_success.php"
 
+<<<<<<< HEAD
 $_SESSION['username']=$username;
 
 $_SESSION['password']=$password;
@@ -38,6 +39,17 @@ header("location:homepage.php");
 }
 else 
 header("location:lg_su.php");
+=======
+$_SESSION['username']="$username";
+$_SESSION['password']="$password";
+
+//session_start();
+
+if(!isset($_SESSION['username'])){
+header("location:homepage.php");
+}
+else  header("location:lg_su.php");
+>>>>>>> 37f016193edc286cd1adcb37c2e079b00e7bbc5e
 
 }
 else {

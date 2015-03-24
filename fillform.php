@@ -6,8 +6,45 @@
 		<title>MNNIT-conference</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
-     
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
+    <script>
+$(document).ready(function(){
+$(function(){
+$("#start").click(function(){
   
+   
+  var url      = window.location.href; 
+  
+  $.post("autofill.php",{"username":$("#username").val(),"password":$("#password").val()},
+           function(data,status){
+         if(status=="success"){console.log("hi");
+         //dat=JSON.parse(data);console.log(data);
+           console.log(data);
+          $.each(data, function(i,item){  
+        
+      if (item.field == "name") {
+              $("#name").val(item.value);
+            } else if (item.field == "instname") {
+              $("#instname").val(item.value);
+            }
+            else if (item.field == "address") {
+              $("#address").val(item.value);
+            }
+            else if (item.field == "phone") {
+              $("#phone").val(item.value);
+            }
+            else if (item.field == "email") {
+              $("#email").val(item.value);
+                              }//if
+                                      });
+        }
+         }//function close
+        );
+});
+});
+});
+
+    </script>
 </head>
 <body>
 	<div class="page-header no-margin row">
@@ -31,23 +68,23 @@
 	<div class="collapse navbar-collapse navbar-right" id="bs-mnnit-navbar-collapse-1">
 		<div class="container-fluid push-right">
 		<div class="panel-body">	
-	<form class="form-inline" action="chkuser.php" method="post">
+	<form class="form-inline"  id="hello" method="post" >
   <div class="form-group">
     <label class="sr-only" for="userid">USERID</label>
     <input type="text" class="form-control" id="userid" name="username" placeholder="Enter UserId">
   </div>
   <div class="form-group">
     <label class="sr-only" for="exampleInputPassword3">Password</label>
-    <input type="password" class="form-control" name="password" id="exampleInputPassword3" placeholder="Password">
+    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
   </div>
   <div class="checkbox">
     <label>
       <input type="checkbox"> Remember me
     </label>
   </div>
-  <button type="submit" class="btn btn-default">Sign in</button>
+  <button type="submit" id="start" name="start" class="btn btn-default">Sign in</button>
 </form>
-</div>
+</div>  
 </div>
 	</div>
 	</div>
@@ -76,7 +113,9 @@ else {
  <div class="form-group">
     <label for="Name" class="col-sm-2 control-label">NAME*</label>
       <div class="col-sm-10">
+
     <input type="text" class="form-control" id="tf1" required placeholder="Enter Name" name="Name">
+    
       </div>
   </div>
  <!--instname-->     
@@ -84,27 +123,31 @@ else {
     <label for="InstituteName"class="col-sm-2 control-label" >INSTITUTE NAME*</label>
        <div class="col-sm-10">
     <input type="text" class="form-control" id="tf2" required name="instname" placeholder="Enter Institute Name">
+
         </div>
   </div>
  <!--address-->    
   <div class="form-group">
       <label for="Address"class="col-sm-2 control-label">ADDRESS*</label>
       <div class="col-sm-10">
-      <input type="text" class="form-control" id="tf3" name="address" required>
+      <input type="text" class="form-control" id="address" name="address" required>
       </div>
 </div>
 <!--email-->    
 <div class="form-group">
     <label for="exampleInputEmail1"class="col-sm-2 control-label">Email address*</label>
      <div class="col-sm-10">
+
     <input type="email" class="form-control" name="tf4" required id="exampleInputEmail1" placeholder="Enter Email">
+
+
     </div>
 </div>
 <!--phone-->    
 <div class="form-group">
     <label for="ContactNo."class="col-sm-2 control-label">CONTACT NO.</label>
      <div class="col-sm-10">
-    <input type="tel" class="form-control" id="tf5" required name="phone">
+    <input type="tel" class="form-control" id="phone" required name="phone">
     </div>
 </div>
 

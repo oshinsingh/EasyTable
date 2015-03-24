@@ -35,7 +35,7 @@
  
     <ul class="nav nav-pills btn navbar-btn ">
 
-  <li role="presentation"><a href="#">Home</a></li>
+   <li role="presentation"><a href="#">Home</a></li>
   <li role="presentation"><a href="submissions.php">Submissions</a></li>
   <li role="presentation"><a href="#">conferences</a></li>
   <li role="presentation" ><a href="status.php">status</a></li>
@@ -53,6 +53,7 @@
     </ul>
   </li>
   
+  
 </ul>
 </div>
 
@@ -63,61 +64,28 @@
 
 
   
-  <div class="container">
-    <h4>Conference-Info</h4>
+  <div class="container-fluid">
+ <p class="text-left"><h4>Reviews</h4></p>
+
+<ul>
+
+    <li><a href="#">Review on all papers</a></li>
+    <li><a href="#">Review on my papers</a></li>
+  
+   <li><a href="#">Send notifications for review</a></li>
+
+   <li><a href="#">Delete or comment </a></li>
 
 
-<div class="col-md-4 ">
-  <table class="table table-bordered">
-    <tbody>
-  <tr>
-    <th>Name of a event</th>
-    <td>ICCCT-2015</td>
-    
-  </tr>
-  <tr>
-    <th>Website</th>
-    <td><a href="www.mnnit.ac.in">www.mnnnit.ac.in</td>
-  </tr>
-</tr>
-  <tr>
-    <th>Submission Page</th>
-    <td><a href="fillform.php">mnnit.ac.in/submission</a></td>
-  </tr>
+  
 
 
 
 
-    </tbody>
-    </table>
-  </div>
-
-<br><br><br><br><br><br><br>
-
-
-
-
-    <h4>Important Dates</h4>
-    <div class="col-md-4 ">
-  <table class="table table-bordered">
-    <tbody>
-  <tr>
-    <th>Description</th>
-    <th>Dates</th>
-    
-  </tr>
-  <tr>
-    <td>Iccct-2015</td>
-    <td>2015-09-25 - 2015-09-27</td>
-  </tr>
-
-
-
-
-    </tbody>
-    </table>
-  </div>
+  </ul>
 </div>
+
+
 
 
 
