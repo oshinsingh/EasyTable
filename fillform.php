@@ -76,14 +76,14 @@ else {
  <div class="form-group">
     <label for="Name" class="col-sm-2 control-label">NAME*</label>
       <div class="col-sm-10">
-    <input type="text" class="form-control" id="tf1" required placeholder="Enter NAME" name="name">
+    <input type="text" class="form-control" id="tf1" required placeholder="Enter Name" name="Name">
       </div>
   </div>
  <!--instname-->     
   <div class="form-group">
     <label for="InstituteName"class="col-sm-2 control-label" >INSTITUTE NAME*</label>
        <div class="col-sm-10">
-    <input type="text" class="form-control" id="tf2" required name="instname" placeholder="Enter INSTITUTE NAME">
+    <input type="text" class="form-control" id="tf2" required name="instname" placeholder="Enter Institute Name">
         </div>
   </div>
  <!--address-->    
@@ -97,7 +97,7 @@ else {
 <div class="form-group">
     <label for="exampleInputEmail1"class="col-sm-2 control-label">Email address*</label>
      <div class="col-sm-10">
-    <input type="email" class="form-control" name="tf4" required id="exampleInputEmail1" placeholder="Enter email">
+    <input type="email" class="form-control" name="tf4" required id="exampleInputEmail1" placeholder="Enter Email">
     </div>
 </div>
 <!--phone-->    
@@ -115,14 +115,14 @@ else {
   <div class="form-group">
     <label for="Title" class="col-sm-2 control-label">TITLE*</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="title" required placeholder="Enter TITLE OF THE PAPER" name="title">
+        <input type="text" class="form-control" id="title" required placeholder="Enter Title Of The Paper" name="Title">
       </div>
   </div>
   <!--abstract-->    
   <div class="form-group">
     <label for="aabstract" class="col-sm-2 control-label" >ABSTRACT*</label>
        <div class="col-sm-10">
-        <textarea id="aabstract" name="aabstract" rows=10 cols=70 class="form-control"></textarea>
+        <textarea id="aabstract" required name="aabstract" rows=10 cols=70 class="form-control"></textarea>
         <!--<input type="text-area" row=5 class="form-control" id="abstract" required name="aabstract" placeholder="Enter Abstract">-->
         </div>
   </div>

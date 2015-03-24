@@ -60,13 +60,13 @@
   <div class="form-group">
     <label for="username" class="col-sm-2 control-label">Username</label>
     <div class="col-sm-10">
-    <input type="text" class="form-control" id="Name" name="username" placeholder="Enter username">
+    <input type="text" class="form-control" id="Name" name="username" placeholder="Enter Username">
   </div>
 </div>
   <div class="form-group">
     <label for="password" class="col-sm-2 control-label">Password</label>
      <div class="col-sm-10">
-    <input type="password" class="form-control" id="InstituteName" name="password" placeholder="Enter password">
+    <input type="password" class="form-control" id="InstituteName" name="password" placeholder="Enter Password" required>
   </div>
 </div>
   

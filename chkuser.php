@@ -29,9 +29,16 @@ if($count==1){
 
 // Register $username, $password and redirect to file "login_success.php"
 
-$_SESSION['username']="$username";
-$_SESSION['password']="$password";
-header("location:login_success.php");
+$_SESSION['username']=$username;
+
+$_SESSION['password']=$password;
+//echo $_SESSION['username'];die();
+if(!isset($_SESSION['username'])){
+header("location:homepage.php");
+}
+else 
+header("location:lg_su.php");
+
 }
 else {
 echo "Wrong Username or Password";
